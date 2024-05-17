@@ -1,0 +1,52 @@
+<?php
+
+
+$host = 'localhost';
+$username = 'root';
+$password = 'usbw';
+$database = 'tcc_cesa';
+$port = 147;
+
+$mysqli = new mysqli($host, $username, $password, $database, $port);
+
+if($mysqli -> errno){
+    die("Falha ao conectar no banco de dados: " . $mysqli -> error);
+}
+
+if(isset($_POST['etec-number']) || isset($_POST['senha'])) {
+
+    if(strlen($_POST['etec-number']) == 0) {
+        echo "Preencha seu e-mail";
+    } else if(strlen($_POST['senha']) == 0) {
+        echo "Preencha sua senha";
+    } else {
+
+        $etec = $mysqli->real_escape_string($_POST['etec-number']);
+        $senha = $mysqli->real_escape_string($_POST['senha']);
+
+        $sql_code = "SELECT * FROM tb01_login WHERE tb01_num_etec = '$etec' AND tb01_senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if($quantidade == 1) {
+            
+            $usuario = $sql_query->fetch_assoc();
+
+            if(!isset($_SESSION)) {
+                session_start();
+            }
+
+            $_SESSION['tb01_id'] = $usuario['tb01_id'];
+            $_SESSION['tb01_num_etec'] = $usuario['tb01_num_etec'];
+
+            header("Location: /pages/principal.php");
+
+        } else {
+            echo "Falha ao logar! E-mail ou senha incorretos";
+        }
+
+    }
+
+}
+?>

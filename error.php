@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Erro</h1>
+    <h1>Erro na conexao com o banco</h1>
 </body>
 </html>

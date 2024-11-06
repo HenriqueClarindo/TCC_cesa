@@ -1,20 +1,386 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-
-/*all*/
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Bebas Neue", sans-serif;
-    color: rgb(255, 255, 255);
 }
-
+.txt{
+    color: white;
+}
 /*navbar*/
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 4px 60px;
-    background-color: blue;
+    background-color: #02549F;
 }
+
+#nav-link{
+    font-weight: 500;
+    font-size: 48px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.icone{
+    width: 90px;
+    height: 90px;
+}
+
+.config{
+    width: 40px;
+    height: 40px;
+}
+
+#btnDados {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 150px;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .3s;
+   }
+   
+   #btnDados:active,
+   #btnDados:hover {
+    outline: 0;
+   }
+   
+   #btnDados span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+   }
+   
+   #btnDados:hover span {
+    background: none;
+   }
+   
+   #btnDados:active {
+    transform: scale(0.9);
+   }
+/*registros*/
+
+.image-text-container {
+    width: 230px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.image-text-container .img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px; 
+}
+
+.image-text-container p {
+    font-size: 40px;
+    color: #02549F; 
+}
+
+.sai-en{
+    position: absolute;
+   left: 40%;
+   top: 20%;
+}
+
+.sel label{
+    color: #02549F;
+    font-size: 30px;
+}
+
+option{
+    color: #02549F;
+}
+
+.sel select{
+    width: 200px;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin: 0 10px 0 10px; 
+    padding: 5px 10px; 
+    border-radius: 30px; 
+    font-family: inherit; 
+    font-size: 16px; 
+    appearance: none; 
+    -webkit-appearance: none; 
+    color: #02549F;
+    font-size: 30px;
+}
+
+.container {
+    top: 63%;
+    left: 48%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    border: #02549F solid 2px;
+    padding: 30px 30px !important;
+    border-radius: 20px;
+
+}
+/*btn em cima da tabela*/
+.btnTabela {
+    width: 200px;
+    background-color: white;
+    border: none;
+    color: #02549F;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+
+/* Estilo padrão */
+#adicionarAlunoBtn {
+    background-color: white;
+    color: #02549F;
+    border: 2px solid #02549F;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo ativo */
+#adicionarAlunoBtn.active,
+#adicionarAlunoBtn:hover {
+    background-color: #02549F;
+    color: white;
+    border: 2px solid white;
+}
+
+/* Estilo padrão */
+#cadAluno {
+    background-color: white;
+    color: #02549F;
+    border: 2px solid #02549F;
+    transition: background-color 0.3s, color 0.3s;
+    float: right;
+}
+
+/* Estilo ativo */
+#cadAluno.active,
+#cadAluno:hover{
+    background-color: #02549F;
+    color: white;
+    border: 2px solid white;
+}
+
+
+  .cadastrar{
+    float: right;
+  }
+  
+  /*card do adicionar aluno*/
+
+/* Estilo dos modais */
+.menu-adicionar-aluno, 
+.menu-cadastrar-aluno {
+    display: none; 
+    position: fixed; 
+    width: 350px;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: #02549F;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    border: 2px solid black;
+}
+
+#overlay, #fecha {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(5px); 
+    z-index: 5;
+    display: none;
+}
+
+#background-content {
+    transition: filter 0.3s ease-in-out;
+}
+
+#adicionarAlunoMenu, 
+#cadastrarAlunoMenu {
+    z-index: 10; 
+}
+
+
+.menu-adicionar-aluno label {
+    display: block;
+    color: white;
+}
+
+.menu-adicionar-aluno input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: 0 0 10px;
+    color: black;
+}
+
+/* Estilos para a lista de resultados */
+#resultadoBusca {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    width: 100%; 
+    overflow-y: auto; 
+    z-index: 999; 
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    color: #02549F;
+}
+
+#resultadoBusca li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee; 
+    color: #02549F;
+}
+
+#resultadoBusca li:hover {
+    background-color: #f0f0f0; 
+}
+
+
+#nomeAluno {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box; 
+}
+
+#rm{
+    height: 38px;
+    margin-top: 20px;
+}
+
+.email{
+    margin-top: 5px;
+}
+
+.menu-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-actions button {
+    width: 48%;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+select{
+    width: 50%;
+    color: #02549F;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 20px 0 0 0;
+    border-radius: 5px;
+    -webkit-appearance: none; 
+    appearance: none; 
+}
+
+
+.btn {
+    background-color: white !important;
+    color: #02549F !important;
+    border: 2px solid #02549F !important;
+    margin: 5px !important;
+}
+
+.btn:hover {
+    background-color: #02549F !important;
+    color: white !important;
+    border: 2px solid white !important;
+}
+
+/**/  
+
+/*card do cadastrar aluno*/
+
+.menu-cadastrar-aluno label {
+    display: block;
+    color: white;
+}
+
+.menu-cadastrar-aluno input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    color: black;
+}
+
+#rm{
+    width: 50%;
+    color: #02549F;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 20px 0 0px 0;
+    border-radius: 5px;
+}
+
+/**/
+#adicionarAlunoMenu,
+#cadastrarAlunoMenu {
+    z-index: 10; 
+}  
+
+.table.dataTable {
+    background-color: #afafaf; 
+    border-collapse: collapse; 
+}
+
+.table.dataTable th, .table.dataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table.dataTable tbody tr.selected {
+    background-color: #959697; 
+    color: black;
+}
+
+
+
+
+
+
